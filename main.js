@@ -7,7 +7,7 @@ block_image_width = 5;
 block_image_height = 5;
 
 function load_img(){
-	fabric.Image.fromURL("golf-hole-on-field-vector-184963343.png", function(Img) {
+	fabric.Image.fromURL("hole.png", function(Img) {
 		hole_obj = Img;
 		hole_obj.scaleToWidth(50);
 		hole_obj.scaleToHeight(50);
@@ -33,37 +33,35 @@ function new_image()
 		canvas.add(ball_obj);
 	});
 }
-
-
+window.addEventListener("keydown", my_keydown);
 function my_keydown(e)
 {
-window.addEventListener("keydown", my_keydown);
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
 	if((ball_x==hole_x)&&(ball_y==hole_y))
 	{
 		canvas.remove(ball_obj);
 		document.getElementById("hd3").innerHTML="You have Hit the goal!!!!😎";
-		document.getElementById("myCanvas").innerHTML.style.borderColor="red";
+		document.getElementById("myCanvas").innerHTML.style.borderColor= "red" ;
 	}
 	else
 	{
-		if(keyPressed == '116')
+		if(keyPressed == '84')
 		{
 			up();
 			console.log("up");
 		}
-		if(keyPressed == '103')
+		if(keyPressed == '71')
 		{
 			down();
 			console.log("down");
 		}
-		if(keyPressed == '102')
+		if(keyPressed == '70')
 		{
 			left();
 			console.log("left");
 		}
-		if(keyPressed == '104')
+		if(keyPressed == '72')
 		{
 			right();
 			console.log("right");
@@ -72,9 +70,9 @@ window.addEventListener("keydown", my_keydown);
 	
 	function up()
 	{
-	if(ball_y =>50)
+	if(ball_y =>100)
 	{
-		ball_y = ball_y +block_image_height;
+		ball_y = ball_y - block_image_height;
 		canvas.remove(ball_obj);
 		new_image();	
 	}
@@ -82,9 +80,9 @@ window.addEventListener("keydown", my_keydown);
 
 	function down()
 	{
-		if(ball_y <=450)
+		if(ball_y <=400)
 		{
-			ball_y = ball_y +block_image_height;
+			ball_y = ball_y + block_image_height;
 			canvas.remove(ball_obj);
 			new_image();
 		}
@@ -92,9 +90,9 @@ window.addEventListener("keydown", my_keydown);
 
 	function left()
 	{
-		if(ball_x => 50)
+		if(ball_x => 100)
 		{
-			ball_y = ball_y +block_image_height;
+			ball_x = ball_x - block_image_height;
 			canvas.remove(ball_obj);
 			new_image();
 		}
@@ -102,9 +100,9 @@ window.addEventListener("keydown", my_keydown);
 
 	function right()
 	{
-		if(ball_x <= 1050)
+		if(ball_x <= 1000)
 		{
-			ball_y = ball_y +block_image_height;
+			ball_x = ball_x + block_image_height;
 			canvas.remove(ball_obj);
 			new_image();	
 		}
